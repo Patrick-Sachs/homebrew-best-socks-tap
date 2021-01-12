@@ -12,11 +12,18 @@ class BestSocks < Formula
     (var/"log/best_socks").mkpath
 
     # Extract app file
-    system "unzip", "./app/best_apps.app.zip"
+    #system "unzip", "./app/best_apps.app.zip"
     system "rm", "-r", "app"
 
     # Copy files
     system "cp", "-R", ".", "#{prefix}"
+
+    # Create DMG
+    #system "hdiutil", "create", "#{prefix}/best_apps.dmg", "-ov", "-volname", "CordawareAppsbox", "-fs", "HFS+", "-srcfolder", "best_apps.app"
+    # system "open", "best_apps.dmg"
+    # system "rm", "-r", "best_apps.app"
+
+    # Cannot create dmg in homebrew installer!
   end
 
   def plist; <<~EOS
